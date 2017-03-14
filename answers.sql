@@ -322,3 +322,35 @@ Write a query that shows all columns in the order_items table for order #2725.
 
 
 SELECT * FROM order_items WHERE order_id = 2725;
+
+
+==========
+24
+
+-----
+
+Write a query that shows the common_name, melon_type, quantity,
+unit_price and total_price for all the melons in order #2725.
+
+-----
+
+
+SELECT m.common_name, m.melon_type, o.quantity, o.unit_price, o.total_price
+FROM melons AS m
+JOIN order_items AS o ON (m.id = o.melon_id)
+WHERE o.order_id = 2725;
+
+
+==========
+25
+
+-----
+
+Write a query that shows the total amount of revenue that comes from
+internet orders.
+
+-----
+
+
+SELECT SUM(order_total) FROM orders
+WHERE salesperson_id is NULL;
